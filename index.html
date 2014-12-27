@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "utf-8">
+	<title>MineSweeper</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class = "row-fluid">
+		<div class = "container">
+			<h2>Minesweep<br><center><small>Survive the mines!</small></center></h2>
+
+			<!-- The board -->
+			<div class = "game">
+				<ul class = "board"></ul>
+			</div>
+			<!-- end of .game -->
+
+			<div class = "backdrop">
+				<div id = "loader">
+					<h1>Please Wait..</h1>
+					<div class = "progress-info bar"></div>
+				</div>
+				<!-- end of .loader -->
+			</div>
+			<!-- end of .backdrop -->
+
+			<div class = "game_over_overlay"></div>
+			<!-- end of .game_over_overlay -->
+		</div>
+		<!-- end of .container -->
+	</div>
+	<!-- end of .row-fluid -->
+	<script src = "js/jquery-1.11.0.js"></script>
+	<script src = "js/logic.js"></script>
+</body>
+</html>
