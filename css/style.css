@@ -17,7 +17,8 @@ input{line-height: 1.6;font-size: 1.2em;}
 .game{margin:0 0 0 15%;clear: both;z-index:1;}
 
 .game_over_overlay{
-  margin:2.5% 0 0 6%;
+	margin: 0 auto;
+  margin:2.5% 0 0 80px;
   width:305px;
   height: 305px;
   color: #d91e18;
@@ -30,7 +31,8 @@ input{line-height: 1.6;font-size: 1.2em;}
 }
 .game_over_overlay > h1{ padding-top:30%; }
 .backdrop{
-  margin:2.5% 0 0 6%;
+	margin: 0 auto;
+  margin:2.5% 0 0 80px;
   width:305px;
   height: 305px;
   opacity: 0.9;
