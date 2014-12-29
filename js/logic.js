@@ -28,7 +28,7 @@ $(document).ready(function(){
 			miner.loadGame();
 			// draw board and place mines
 			miner.drawBoard();
-			miner.findMine();
+			miner.findMine();	
 		},
 		drawBoard:function(){
 				game.restarted = false;
@@ -50,6 +50,7 @@ $(document).ready(function(){
 			$('ul.board > a').click(function(e){
 				e.preventDefault();
 
+				// set some variables
 				var boxId = $(this).attr("id"), 
 				boxClass = $('ul.board > a#'+boxId+'').attr("class"),
 				box = $('ul.board > a#'+boxId+' > li'),
@@ -57,6 +58,8 @@ $(document).ready(function(){
 				prevBoxId = Math.abs(boxId-1),
 				afterNextBoxId = Math.abs(nextBoxId+1),
 				befPrevBoxId = Math.abs(prevBoxId-1);
+
+				// style clicked box
 				box.css("box-shadow","inset 0px 2px 20px #999");
 
 				// display mines and non-mines
@@ -80,23 +83,18 @@ $(document).ready(function(){
 			});			
 		},
 		gameOver:function(){
-			// show hidden mines
-			for( var i = 1;i <= 25;i++){
-				if ( $('ul.board > a#'+i+'').attr("class") == "tile-mine"){
-					$('ul.board > a#'+i+'').css("background","#f22613");
-				}
-			}
 			// display Game Over message
 			overlay.show().fadeIn(1000);
 			overlay.html("");
 			overlay.html("<h1>GAME OVER!</h1><br><h3>Score: "+cell.noneMineCount+"</h3><br><button type = 'button' id = 'restart' class = 'btn btn-success'><i class = 'icon-refresh icon-white'></i>&nbsp;Restart</button");
-
+			// restart
 			miner.restart();
 		},
 		restart:function(){
 			// restart game
 			$("#restart").click(function(e){
 				e.preventDefault();
+				$("#audio").html('');
 				game.restarted = true;
 				// reset mines count
 				cell.minesFound = 0;
@@ -112,7 +110,6 @@ $(document).ready(function(){
 				$("ul.board > a#"+i+"").remove();
 				$('ul.board > a#'+i+' > li').remove();
 			}
-		
 		},
 		loadGame:function(){
 			// remove game over overlay
@@ -124,12 +121,14 @@ $(document).ready(function(){
 				backdrop.html("<h1>"+max_time+"</h1><br><center><img src = 'assets/loader.gif'></center>");
 				if (max_time == 1) {backdrop.html("");backdrop.html("<h1>START</h1>");};
 				if (max_time == 0) {
+					$("#audio").html('<audio id = "gameAudio" src = "assets/play.mp3" preload = "auto" autoplay replay = "true"/>');
 					game.loaded = true;
 					clearInterval(intVal);
 					backdrop.hide().fadeOut();
 				}
 			}
 			intVal = setInterval(displaySeconds,1000);
+			return game.loaded;
 		}
 	}
 	
